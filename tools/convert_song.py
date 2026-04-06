@@ -3,53 +3,55 @@
 Convert a song .txt file to .yml format for the songbook.
 
 Usage:
-    Interactive: python3 tools/convert_song.py
-    CLI:        python3 tools/convert_song.py --filepath song.txt --title "Title" --artist "Artist" [--piano] [--guitar] [--readiness 5]
+    python3 tools/convert_song.py [options]
+
+Options:
+    -f, --filepath FILE    Input .txt filename (required)
+    -t, --title TITLE      Song title (required)
+    -a, --artist ARTIST    Artist name (required)
+    -p, --piano            Song has piano parts (default: false)
+    -g, --guitar           Song has guitar parts (default: false)
+    -r, --readiness N      Readiness 1-10 (default: 5)
+
+If no options provided, runs in interactive mode.
 """
 
 import argparse
 import os
 import sys
 
-def process_file(input_file, title, artist, piano=True, guitar=True, readiness=5):
+def process_file(input_file, title, artist, piano=False, guitar=False, readiness=5):
     """Process a single song file."""
     
-    # Validate extension
     if not input_file.endswith('.txt'):
         print(f"ERROR: File must end in .txt, got: {input_file}")
         return False
     
-    # Check file exists
     if not os.path.exists(input_file):
         print(f"ERROR: File not found: {input_file}")
         return False
     
-    # Generate output filename
     output_file = input_file[:-4] + '.yml'
     
-    # Check if output already exists
     if os.path.exists(output_file):
         overwrite = input(f"Output file '{output_file}' exists. Overwrite? (y/n): ").strip().lower()
         if overwrite != 'y':
             print("Skipped.")
             return False
     
-    # Read input file
     with open(input_file, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # Process content: add 2 spaces to each line
     lines = content.split('\n')
     processed_lines = []
     for line in lines:
-        if line:  # Only add spaces to non-empty lines
+        if line:
             processed_lines.append('  ' + line)
         else:
-            processed_lines.append('')  # Preserve blank lines
+            processed_lines.append('')
     
     processed_content = '\n'.join(processed_lines)
     
-    # Generate YAML
     yaml_output = f'''title: "{title}"
 artist: "{artist}"
 piano: {str(piano).lower()}
@@ -59,7 +61,6 @@ content: |
 {processed_content}
 '''
     
-    # Write output file
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(yaml_output)
     
@@ -84,7 +85,7 @@ def interactive_mode():
         sys.exit(1)
     
     print()
-    print("Enter song metadata (press Enter for defaults where applicable):")
+    print("Enter song metadata:")
     print("-" * 50)
     
     title = input("Title: ").strip()
@@ -97,11 +98,8 @@ def interactive_mode():
         print("ERROR: Artist is required")
         sys.exit(1)
     
-    piano_input = input("Piano (true/false) [true]: ").strip().lower()
-    piano = piano_input != 'false'
-    
-    guitar_input = input("Guitar (true/false) [true]: ").strip().lower()
-    guitar = guitar_input != 'false'
+    piano = input("Piano? (y/n) [n]: ").strip().lower() == 'y'
+    guitar = input("Guitar? (y/n) [n]: ").strip().lower() == 'y'
     
     readiness_input = input("Readiness (1-10) [5]: ").strip()
     try:
@@ -120,66 +118,28 @@ def interactive_mode():
     else:
         sys.exit(1)
 
-def cli_mode(args):
-    """Run in CLI mode with arguments."""
-    # Handle piano/guitar defaults
-    piano = True
-    guitar = True
-    if args.piano_flag == 'piano_false':
-        piano = False
-    if args.guitar_flag == 'guitar_false':
-        guitar = False
-    
-    success = process_file(
-        args.filepath,
-        args.title,
-        args.artist,
-        piano,
-        guitar,
-        args.readiness
-    )
-    if not success:
-        sys.exit(1)
-
 def main():
     parser = argparse.ArgumentParser(
         description='Convert song .txt file to .yml format for the songbook.',
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog='''
-Examples:
-  Interactive:
-    python3 tools/convert_song.py
-    
-  CLI with all options:
-    python3 tools/convert_song.py --filepath song.txt --title "Song Title" --artist "Artist Name" --piano --guitar --readiness 7
-    
-  CLI with defaults (piano=true, guitar=true, readiness=5):
-    python3 tools/convert_song.py --filepath song.txt --title "Song Title" --artist "Artist Name"
-'''
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
     
-    parser.add_argument('--filepath', '-f', type=str, required=False,
-                        help='Input .txt filename')
-    parser.add_argument('--title', '-t', type=str, required=False,
+    parser.add_argument('-f', '--filepath', type=str,
+                        help='Input .txt filename (required in CLI mode)')
+    parser.add_argument('-t', '--title', type=str,
                         help='Song title (required in CLI mode)')
-    parser.add_argument('--artist', '-a', type=str, required=False,
+    parser.add_argument('-a', '--artist', type=str,
                         help='Artist name (required in CLI mode)')
-    parser.add_argument('--piano', dest='piano_flag', action='store_const', const='piano_true',
-                        help='Has piano parts')
-    parser.add_argument('--no-piano', dest='piano_flag', action='store_const', const='piano_false',
-                        help='Disable piano')
-    parser.add_argument('--guitar', dest='guitar_flag', action='store_const', const='guitar_true',
-                        help='Has guitar parts')
-    parser.add_argument('--no-guitar', dest='guitar_flag', action='store_const', const='guitar_false',
-                        help='Disable guitar')
-    parser.add_argument('--readiness', '-r', type=int, default=5,
+    parser.add_argument('-p', '--piano', action='store_true',
+                        help='Song has piano parts (default: false)')
+    parser.add_argument('-g', '--guitar', action='store_true',
+                        help='Song has guitar parts (default: false)')
+    parser.add_argument('-r', '--readiness', type=int, default=5,
                         help='Readiness 1-10 (default: 5)')
     
     args = parser.parse_args()
     
-    # If any CLI args provided, use CLI mode
     if args.filepath or args.title or args.artist:
-        # Validate required arguments
         if not args.filepath:
             print("ERROR: --filepath is required in CLI mode")
             sys.exit(1)
@@ -190,17 +150,15 @@ Examples:
             print("ERROR: --artist is required in CLI mode")
             sys.exit(1)
         
-        # Set defaults if flags not provided
-        piano = True
-        guitar = True
-        if args.piano_flag == 'piano_false':
-            piano = False
-        if args.guitar_flag == 'guitar_false':
-            guitar = False
-        
-        cli_mode(args)
+        process_file(
+            args.filepath,
+            args.title,
+            args.artist,
+            args.piano,
+            args.guitar,
+            args.readiness
+        )
     else:
-        # Interactive mode
         interactive_mode()
 
 if __name__ == '__main__':
