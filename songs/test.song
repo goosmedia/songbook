@@ -1,0 +1,12 @@
+---
+title: "Test"
+artist: "Tester"
+piano: true
+guitar: false
+readiness: 3
+---
+      C
+Test content line 1
+
+      G
+Test content line 2
