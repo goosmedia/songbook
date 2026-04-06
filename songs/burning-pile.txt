@@ -1,3 +1,10 @@
+---
+title: "Burning Pile"
+artist: "Mother Mother"
+piano: true
+guitar: true
+readiness: 5
+---
       Bb                    Gm
 All my style
 

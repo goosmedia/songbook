@@ -47,6 +47,32 @@ title: Songbook
   let sortKey = 'title';
   let sortDir = 'asc';
 
+  function parseYAMLFront(text) {
+    const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    if (!match) return null;
+    
+    const yamlStr = match[1];
+    const content = match[2];
+    const data = {};
+    
+    yamlStr.split('\n').forEach(line => {
+      const colonIndex = line.indexOf(':');
+      if (colonIndex === -1) return;
+      const key = line.substring(0, colonIndex).trim();
+      let value = line.substring(colonIndex + 1).trim();
+      
+      if (value === 'true') value = true;
+      else if (value === 'false') value = false;
+      else if (!isNaN(value) && value !== '') value = parseInt(value, 10);
+      else if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+      else if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
+      
+      data[key] = value;
+    });
+    
+    return { meta: data, content: content };
+  }
+
   function getSortValue(song, key) {
     const val = song[key];
     if (typeof val === 'boolean') return val ? 1 : 0;
@@ -82,7 +108,8 @@ title: Songbook
       return `<td class="icon-cell"><span class="icon ${song[col.key] ? 'active' : 'inactive'}">${song[col.key] ? '●' : '○'}</span></td>`;
     }
     if (col.type === 'link') {
-      return `<td class="title-cell"><a href="${song.url}">${song.title}</a></td>`;
+      const filename = song.filename;
+      return `<td class="title-cell"><a href="./song/?f=${encodeURIComponent(filename)}">${song.title}</a></td>`;
     }
     return `<td>${song[col.key] || '—'}</td>`;
   }
@@ -122,15 +149,29 @@ title: Songbook
   }
 
   function loadSongs() {
-    fetch('./songs.json')
+    fetch('./songs-manifest.json')
       .then(r => r.json())
-      .then(data => {
-        songs = data;
+      .then(filenames => {
+        return Promise.all(filenames.map(filename => 
+          fetch(`./songs/${filename}`)
+            .then(r => r.text())
+            .then(text => {
+              const parsed = parseYAMLFront(text);
+              if (parsed) {
+                return { ...parsed.meta, filename: filename, content: parsed.content };
+              }
+              return null;
+            })
+        ));
+      })
+      .then(results => {
+        songs = results.filter(s => s !== null);
         renderTable();
       })
-      .catch(() => {
+      .catch(err => {
+        console.error('Failed to load songs:', err);
         document.getElementById('table-body').innerHTML = 
-          '<tr><td colspan="5" class="error">Failed to load songs. Make sure Jekyll is running.</td></tr>';
+          '<tr><td colspan="5" class="error">Failed to load songs.</td></tr>';
       });
   }
 
