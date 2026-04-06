@@ -44,7 +44,7 @@ title: Songbook
   ];
 
   const SONG_MANIFEST = [
-    { filename: 'new-song.txt', title: 'Burning Pile', artist: 'Mother Mother', piano: true, guitar: true, readiness: 5 }
+    { filename: 'burning-pile.song', title: 'Burning Pile', artist: 'Mother Mother', piano: true, guitar: true, readiness: 5 }
   ];
 
   let songs = SONG_MANIFEST;
