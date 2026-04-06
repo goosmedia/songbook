@@ -1,0 +1,7 @@
+title: Songbook
+description: My personal songbook with chords and lyrics
+theme: minima
+collections:
+  songs:
+    output: true
+    permalink: /songs/:title/

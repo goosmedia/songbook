@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="song">
+  <header class="song-header">
+    <h1 class="song-title">{{ page.title }}</h1>
+    <p class="song-artist">{{ page.artist }}</p>
+    <div class="song-meta">
+      {% if page.piano %}<span class="meta-tag piano">Piano</span>{% endif %}
+      {% if page.guitar %}<span class="meta-tag guitar">Guitar</span>{% endif %}
+      <span class="meta-tag readiness">Readiness: {{ page.readiness }}</span>
+    </div>
+  </header>
+
+  <div class="song-content">
+    {{ content }}
+  </div>
+
+  <div class="song-actions">
+    <a href="/" class="back-link">← Back to Songbook</a>
+  </div>
+</article>
