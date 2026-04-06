@@ -82,7 +82,7 @@ title: Songbook
       return `<td class="icon-cell"><span class="icon ${song[col.key] ? 'active' : 'inactive'}">${song[col.key] ? '●' : '○'}</span></td>`;
     }
     if (col.type === 'link') {
-      return `<td class="title-cell"><a href="${song.url}">${song.title}</a></td>`;
+      return `<td class="title-cell"><a href="./song?f=${encodeURIComponent(song.filename)}">${song.title}</a></td>`;
     }
     return `<td>${song[col.key] || '—'}</td>`;
   }
@@ -122,15 +122,16 @@ title: Songbook
   }
 
   function loadSongs() {
-    fetch('./songs.json')
+    fetch('./songs-manifest.json')
       .then(r => r.json())
       .then(data => {
         songs = data;
         renderTable();
       })
-      .catch(() => {
+      .catch(err => {
+        console.error('Failed to load songs:', err);
         document.getElementById('table-body').innerHTML = 
-          '<tr><td colspan="5" class="error">Failed to load songs. Make sure Jekyll is running.</td></tr>';
+          '<tr><td colspan="5" class="error">Failed to load songs.</td></tr>';
       });
   }
 
