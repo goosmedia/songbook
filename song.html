@@ -35,13 +35,20 @@ title: Song
       return r.text();
     })
     .then(text => {
-      const parts = text.split(/^---$/m);
-      if (parts.length < 3) {
+      const lines = text.split('\n');
+      let yamlEnd = -1;
+      for (let i = 0; i < lines.length; i++) {
+        if (lines[i] === '---' && i > 0) {
+          yamlEnd = i;
+          break;
+        }
+      }
+      if (yamlEnd === -1) {
         throw new Error('Invalid song format');
       }
       
-      const yamlStr = parts[1].trim();
-      const content = parts[2];
+      const yamlStr = lines.slice(1, yamlEnd).join('\n');
+      const content = lines.slice(yamlEnd + 1).join('\n');
       
       const meta = {};
       yamlStr.split('\n').forEach(line => {
