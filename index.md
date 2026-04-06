@@ -122,7 +122,7 @@ title: Songbook
   }
 
   function loadSongs() {
-    fetch('/songs.json')
+    fetch('./songs.json')
       .then(r => r.json())
       .then(data => {
         songs = data;

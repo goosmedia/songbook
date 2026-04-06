@@ -9,7 +9,7 @@ layout: null
       "piano": {{ song.piano | default: false }},
       "guitar": {{ song.guitar | default: false }},
       "readiness": {{ song.readiness | default: 5 }},
-      "url": {{ song.url | jsonify }}
+      "url": {{ song.url | prepend: site.baseurl | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}
 ]
