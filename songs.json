@@ -2,14 +2,15 @@
 layout: null
 ---
 [
-  {%- for song in site.data.songs -%}
+  {%- assign song_pages = site.pages | where_exp: "item", "item.path contains 'songs/'" | where_exp: "item", "item.path endswith '.md'" -%}
+  {%- for song in song_pages -%}
     {
       "title": {{ song.title | jsonify }},
       "artist": {{ song.artist | jsonify }},
-      "piano": {{ song.piano }},
-      "guitar": {{ song.guitar }},
-      "readiness": {{ song.readiness }},
-      "url": {{ song.slug | prepend: "/songbook/songs/" | jsonify }}
+      "piano": {{ song.piano | default: false }},
+      "guitar": {{ song.guitar | default: false }},
+      "readiness": {{ song.readiness | default: 5 }},
+      "url": {{ song.permalink | default: song.url | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}
 ]
