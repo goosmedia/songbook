@@ -33,6 +33,7 @@ title: Songbook
   </div>
 </div>
 
+<script src="./songs-data.js"></script>
 <script>
 (function() {
   const COLUMNS = [
@@ -43,11 +44,7 @@ title: Songbook
     { key: 'readiness', label: 'Readiness', type: 'number' }
   ];
 
-  const SONG_MANIFEST = [
-    { filename: 'burning-pile.song', title: 'Burning Pile', artist: 'Mother Mother', piano: true, guitar: true, readiness: 5 }
-  ];
-
-  let songs = SONG_MANIFEST;
+  let songs = SONGS;
   let sortKey = 'title';
   let sortDir = 'asc';
 

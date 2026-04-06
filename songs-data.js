@@ -1,11 +1,12 @@
----
-title: "Burning Pile"
-artist: "Mother Mother"
-piano: true
-guitar: true
-readiness: 5
----
-      Bb                    Gm
+const SONGS = [
+  {
+    filename: 'burning-pile',
+    title: 'Burning Pile',
+    artist: 'Mother Mother',
+    piano: true,
+    guitar: true,
+    readiness: 5,
+    content: `      Bb                    Gm
 All my style
 
       Bb                    Gm
@@ -102,4 +103,6 @@ bup-bah bah bah, bah bah
 (x6)
 
       Bb  Bb  Bb  Bb
-      Gm  Gm  Gm  Gm
+      Gm  Gm  Gm  Gm`
+  }
+];
