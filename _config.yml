@@ -1,6 +1,5 @@
 title: Songbook
-description: My personal songbook with chords and lyrics
+description: My personal songbook for chords and lyrics
 baseurl: /songbook
 markdown: false
 highlighter: false
-exclude: ['songs']

@@ -43,7 +43,11 @@ title: Songbook
     { key: 'readiness', label: 'Readiness', type: 'number' }
   ];
 
-  let songs = [];
+  const SONG_MANIFEST = [
+    { filename: 'burning-pile.txt', title: 'Burning Pile', artist: 'Mother Mother', piano: true, guitar: true, readiness: 5 }
+  ];
+
+  let songs = SONG_MANIFEST;
   let sortKey = 'title';
   let sortDir = 'asc';
 
@@ -121,25 +125,11 @@ title: Songbook
     renderHeader();
   }
 
-  function loadSongs() {
-    fetch('./songs-manifest.json')
-      .then(r => r.json())
-      .then(data => {
-        songs = data;
-        renderTable();
-      })
-      .catch(err => {
-        console.error('Failed to load songs:', err);
-        document.getElementById('table-body').innerHTML = 
-          '<tr><td colspan="5" class="error">Failed to load songs.</td></tr>';
-      });
-  }
-
   document.getElementById('filter-piano').addEventListener('change', renderTable);
   document.getElementById('filter-guitar').addEventListener('change', renderTable);
   document.getElementById('filter-other').addEventListener('change', renderTable);
 
   renderHeader();
-  loadSongs();
+  renderTable();
 })();
 </script>

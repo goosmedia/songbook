@@ -23,26 +23,18 @@ title: Song
   const params = new URLSearchParams(window.location.search);
   const filename = params.get('f');
   
-  console.log('Filename:', filename);
-  
   if (!filename) {
     document.getElementById('song-title').textContent = 'Song not found';
     document.getElementById('song-content').textContent = 'No filename provided.';
     return;
   }
 
-  const url = './songs/' + filename;
-  console.log('Fetching:', url);
-
-  fetch(url)
+  fetch('./songs/' + filename)
     .then(r => {
-      console.log('Response:', r.status, r.statusText);
       if (!r.ok) throw new Error('Song not found');
       return r.text();
     })
     .then(text => {
-      console.log('Raw text length:', text.length);
-      console.log('First 200 chars:', text.substring(0, 200));
       const lines = text.split('\n');
       let yamlEnd = -1;
       for (let i = 0; i < lines.length; i++) {
@@ -51,10 +43,7 @@ title: Song
           break;
         }
       }
-      console.log('yamlEnd index:', yamlEnd);
-      if (yamlEnd === -1) {
-        throw new Error('Invalid song format');
-      }
+      if (yamlEnd === -1) throw new Error('Invalid song format');
       
       const yamlStr = lines.slice(1, yamlEnd).join('\n');
       const content = lines.slice(yamlEnd + 1).join('\n');
