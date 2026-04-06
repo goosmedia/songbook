@@ -3,8 +3,3 @@ description: My personal songbook with chords and lyrics
 baseurl: /songbook
 markdown: false
 highlighter: false
-collections:
-  songs:
-    output: true
-    permalink: /songs/:title/
-    markdown: false
