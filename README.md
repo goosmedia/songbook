@@ -4,9 +4,11 @@ A dark-mode songbook for displaying chords and lyrics with monospace alignment. 
 
 ## Adding Songs
 
-### Step 1: Create a new YAML file
+### Step 1: Copy the template
 
-Create a new file in `_data/songs/` folder (e.g., `my-song.yml`):
+Copy `_data/songs/00_template.yml` and rename it (e.g., `my-song.yml`).
+
+### Step 2: Edit the new file
 
 ```yaml
 title: "Song Title"
@@ -85,15 +87,7 @@ To add a new field (e.g., `electro`):
 ```
 ├── _data/songs/
 │   ├── burning-pile.yml    (song files - one per song)
-│   └── _template.yml       (template for new songs)
-├── index.html              (generated)
-├── index.md                (table of contents)
-├── song.html               (song viewer)
-├── songs.json              (generated - index data)
-├── assets/
-│   └── main.css
-└── _layouts/
-    └── default.html
+│   └── 00_template.yml    (copy this to create new songs)
 ```
 
 ---
