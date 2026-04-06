@@ -1,39 +1,3 @@
----
-layout: default
-title: Songbook
----
-<div class="container">
-  <h1 class="page-title">My Songbook</h1>
-
-  <div class="filters">
-    <span class="filter-label">Filter:</span>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-piano" checked>
-      <span>Piano</span>
-    </label>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-guitar" checked>
-      <span>Guitar</span>
-    </label>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-other">
-      <span>Other</span>
-    </label>
-  </div>
-
-  <div class="table-wrapper">
-    <table id="song-table">
-      <thead>
-        <tr id="table-header"></tr>
-      </thead>
-      <tbody id="table-body">
-        <tr><td colspan="5" class="loading">Loading songs...</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<script>
 (function() {
   const COLUMNS = [
     { key: 'title', label: 'Title', type: 'link' },
@@ -141,4 +105,3 @@ title: Songbook
   renderHeader();
   loadSongs();
 })();
-</script>

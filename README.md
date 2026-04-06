@@ -1,18 +1,10 @@
 # My Songbook
 
-A dark-mode songbook for displaying chords and lyrics. Hosted on GitHub Pages.
+A Jekyll-based songbook for displaying chords and lyrics with GitHub Pages.
 
 ## Adding Songs
 
-### Step 1: Create the song file
-
-Create a new `.txt` file in the `songs/` folder:
-
-```
-songs/my-song.txt
-```
-
-### Step 2: Add YAML front matter and content
+Add a new `.md` file to the `_songs/` folder with the following format:
 
 ```yaml
 ---
@@ -29,23 +21,7 @@ First line of lyrics
 Second line of lyrics
 ```
 
-### Step 3: Register the song
-
-Add the filename to `songs-manifest.json`:
-
-```json
-["burning-pile.txt", "my-song.txt"]
-```
-
-### Step 4: Push to GitHub
-
-```bash
-git add .
-git commit -m "Add my-song"
-git push
-```
-
-## Metadata Fields
+### Metadata Fields
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -55,12 +31,12 @@ git push
 | guitar | boolean | Has guitar parts |
 | readiness | integer | 1-10 readiness score |
 
-Add new boolean fields as needed (e.g., `electro: true`).
+### Adding New Columns
 
-## Adding New Table Columns
+To add a new metadata column to the table:
 
 1. Add the field to your song's YAML front matter
-2. Update the `COLUMNS` array in `index.md` JavaScript:
+2. Update the `COLUMNS` array in `assets/main.js`
 
 ```javascript
 const COLUMNS = [
@@ -69,23 +45,8 @@ const COLUMNS = [
   { key: 'piano', label: 'Piano', type: 'icon' },
   { key: 'guitar', label: 'Guitar', type: 'icon' },
   { key: 'readiness', label: 'Readiness', type: 'number' },
-  { key: 'myfield', label: 'My Field', type: 'text' },  // Add new columns here
+  { key: 'tempo', label: 'Tempo', type: 'number' },  // Add new columns here
 ];
-```
-
-## File Structure
-
-```
-├── index.html           (generated)
-├── index.md             (table of contents)
-├── song.html            (song viewer)
-├── songs/
-│   ├── manifest.json
-│   └── *.txt           (song files)
-├── assets/
-│   └── main.css
-└── _layouts/
-    └── default.html
 ```
 
 ## Local Development
@@ -95,8 +56,8 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Visit `http://localhost:4000/songbook/` to preview.
+Visit `http://localhost:4000` to preview.
 
 ## Deployment
 
-Push to GitHub - GitHub Pages will automatically build and deploy.
+Push to GitHub and GitHub Pages will automatically build and deploy the site.
