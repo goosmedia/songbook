@@ -1,0 +1,58 @@
+---
+layout: default
+title: Song
+---
+<article class="song">
+  <div class="song-header">
+    <h1 class="song-title" id="song-title">Loading...</h1>
+    <p class="song-artist" id="song-artist"></p>
+    <div class="song-meta" id="song-meta"></div>
+  </div>
+
+  <div class="song-content">
+    <pre id="song-content">Loading...</pre>
+  </div>
+
+  <div class="song-actions">
+    <a href="./" class="back-link">← Back to Songbook</a>
+  </div>
+</article>
+
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const filename = params.get('f');
+  
+  if (!filename) {
+    document.getElementById('song-title').textContent = 'Song not found';
+    document.getElementById('song-content').textContent = 'No filename provided.';
+    return;
+  }
+
+  fetch('./songs.json')
+    .then(r => r.json())
+    .then(songs => {
+      const song = songs.find(s => s.filename === filename);
+      if (!song) {
+        document.getElementById('song-title').textContent = 'Song not found';
+        document.getElementById('song-content').textContent = 'Could not find: ' + filename;
+        return;
+      }
+
+      document.getElementById('song-title').textContent = song.title || 'Untitled';
+      document.getElementById('song-artist').textContent = song.artist || '';
+      document.getElementById('song-content').textContent = song.content || '';
+      
+      const metaContainer = document.getElementById('song-meta');
+      if (song.piano) metaContainer.innerHTML += '<span class="meta-tag piano">Piano</span>';
+      if (song.guitar) metaContainer.innerHTML += '<span class="meta-tag guitar">Guitar</span>';
+      if (song.readiness) metaContainer.innerHTML += '<span class="meta-tag readiness">Readiness: ' + song.readiness + '</span>';
+      
+      document.title = (song.title || 'Song') + ' - Songbook';
+    })
+    .catch(err => {
+      document.getElementById('song-title').textContent = 'Error loading song';
+      document.getElementById('song-content').textContent = err.message;
+    });
+})();
+</script>

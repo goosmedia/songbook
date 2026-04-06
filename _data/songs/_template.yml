@@ -1,0 +1,11 @@
+title: "Song Title"
+artist: "Artist Name"
+piano: true
+guitar: false
+readiness: 5
+content: |
+  Chord    Chord
+  Lyric line here
+
+  Chord    Chord
+  Lyric line here

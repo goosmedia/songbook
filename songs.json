@@ -2,14 +2,18 @@
 layout: null
 ---
 [
-  {%- for song in site.data.songs -%}
+  {%- for pair in site.data.songs -%}
+    {%- assign song_key = pair[0] -%}
+    {%- assign song = pair[1] -%}
     {
+      "filename": {{ song_key | jsonify }},
       "title": {{ song.title | jsonify }},
       "artist": {{ song.artist | jsonify }},
-      "piano": {{ song.piano }},
-      "guitar": {{ song.guitar }},
-      "readiness": {{ song.readiness }},
-      "url": {{ song.slug | prepend: "/songbook/songs/" | jsonify }}
+      "piano": {{ song.piano | default: false }},
+      "guitar": {{ song.guitar | default: false }},
+      "readiness": {{ song.readiness | default: 5 }},
+      "content": {{ song.content | jsonify }},
+      "url": {{ song_key | prepend: "/songbook/song?f=" | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
   {%- endfor -%}
 ]
