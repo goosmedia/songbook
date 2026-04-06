@@ -13,7 +13,7 @@ layout: default
   </header>
 
   <div class="song-content">
-    <pre>{{ content | replace: "</p>", "" | replace: "<p>", "" | replace: "<br>", "&#10;" | replace: "<br/>", "&#10;" | replace: "<br />", "&#10;" | strip_html }}</pre>
+    <pre>{% capture song_slug %}{{ page.slug }}{% endcapture %}{% include {{ song_slug }}.txt %}</pre>
   </div>
 
   <div class="song-actions">
