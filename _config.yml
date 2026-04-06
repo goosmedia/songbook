@@ -1,6 +1,5 @@
 title: Songbook
 description: My personal songbook with chords and lyrics
-theme: minima
 baseurl: /songbook
 collections:
   songs:
