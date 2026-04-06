@@ -1,6 +1,8 @@
 title: Songbook
 description: My personal songbook with chords and lyrics
 baseurl: /songbook
+markdown: false
+highlighter: false
 collections:
   songs:
     output: true
