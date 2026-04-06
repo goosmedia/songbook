@@ -1,0 +1,11 @@
+TITLE: Burning Pile
+ARTIST: Mother Mother
+PIANO: true
+GUITAR: true
+READINESS: 5
+---
+      Bb                    Gm
+All my style
+
+      Bb                    Gm
+All my grace
