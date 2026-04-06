@@ -13,7 +13,7 @@ layout: default
   </header>
 
   <div class="song-content">
-    <pre>{{ content }}</pre>
+    <pre>{{ content | replace: "</p>", "" | replace: "<p>", "" | replace: "<br>", "&#10;" | replace: "<br/>", "&#10;" | replace: "<br />", "&#10;" | strip_html }}</pre>
   </div>
 
   <div class="song-actions">
