@@ -1,5 +1,25 @@
 const SONGS = [
   {
+    filename: 'template',
+    title: 'Template Song',
+    artist: 'Artist Name',
+    piano: true,
+    guitar: true,
+    readiness: 5,
+    content: `      Am                   G
+First line of lyrics here
+
+      F                    C
+Second line of lyrics here
+
+[Verse 2]
+      Am
+Third line here
+
+      G
+Fourth line here`
+  },
+  {
     filename: 'burning-pile',
     title: 'Burning Pile',
     artist: 'Mother Mother',
