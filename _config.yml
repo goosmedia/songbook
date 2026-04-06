@@ -5,3 +5,4 @@ collections:
   songs:
     output: true
     permalink: /songs/:title/
+    markdown: false

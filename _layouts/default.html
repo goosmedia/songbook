@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
-  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 </head>
 <body>
   <header>
     <nav>
-      <a href="/" class="nav-title">Songbook</a>
+      <a href="{{ '/' | relative_url }}" class="nav-title">Songbook</a>
     </nav>
   </header>
 
@@ -21,6 +21,6 @@
     <p>My Songbook</p>
   </footer>
 
-  <script src="/assets/main.js"></script>
+  <script src="{{ '/assets/main.js' | relative_url }}"></script>
 </body>
 </html>
