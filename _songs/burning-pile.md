@@ -6,7 +6,7 @@ guitar: true
 readiness: 5
 ---
       Bb                    Gm
-All my style
+TEST-All my style
 
       Bb                    Gm
 All my grace
