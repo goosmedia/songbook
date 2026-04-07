@@ -85,6 +85,7 @@ function initScrollControls() {
   
   let isPlaying = false;
   let scrollInterval = null;
+  let hasStartedOnce = false;
   
   function updateSpeed() {
     label.textContent = parseFloat(slider.value).toFixed(1) + 'x';
@@ -116,6 +117,16 @@ function initScrollControls() {
     scrollInterval = setInterval(scrollDown, 50);
   }
   
+  function startScrollFromTop() {
+    if (!hasStartedOnce) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(startScroll, 300);
+    } else {
+      startScroll();
+    }
+    hasStartedOnce = true;
+  }
+  
   function stopScroll() {
     if (scrollInterval) {
       clearInterval(scrollInterval);
@@ -130,8 +141,7 @@ function initScrollControls() {
     if (isPlaying) {
       stopScroll();
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(startScroll, 300);
+      startScrollFromTop();
     }
   }
   
