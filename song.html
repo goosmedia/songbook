@@ -23,7 +23,7 @@ title: Song
 <div class="scroll-controls" id="scroll-controls" style="display: none;">
   <button class="scroll-btn" id="scroll-btn" title="Play/Pause">▶ Play</button>
   <div class="speed-control">
-    <input type="range" class="speed-slider" id="speed-slider" min="0.1" max="2" step="0.1" value="1">
+    <input type="range" class="speed-slider" id="speed-slider" min="0.3" max="2" step="0.1" value="1">
     <span class="speed-label" id="speed-label">1.0x</span>
   </div>
 </div>
@@ -137,5 +137,25 @@ function initScrollControls() {
   
   btn.addEventListener('click', toggleScroll);
   slider.addEventListener('input', updateSpeed);
+  
+  function speedUp() {
+    let newVal = Math.min(parseFloat(slider.value) + 0.1, 2);
+    slider.value = newVal;
+    updateSpeed();
+  }
+  
+  function speedDown() {
+    let newVal = Math.max(parseFloat(slider.value) - 0.1, 0.3);
+    slider.value = newVal;
+    updateSpeed();
+  }
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+    const key = e.key.toLowerCase();
+    if (key === 'w') toggleScroll();
+    if (key === 'd') speedUp();
+    if (key === 'a') speedDown();
+  });
 }
 </script>
