@@ -2,21 +2,31 @@
 layout: default
 title: Song
 ---
-<article class="song">
-  <div class="song-header">
-    <h1 class="song-title" id="song-title">Loading...</h1>
-    <p class="song-artist" id="song-artist"></p>
-    <div class="song-meta" id="song-meta"></div>
-  </div>
+<div class="song-wrapper">
+  <article class="song">
+    <div class="song-header">
+      <h1 class="song-title" id="song-title">Loading...</h1>
+      <p class="song-artist" id="song-artist"></p>
+      <div class="song-meta" id="song-meta"></div>
+    </div>
 
-  <div class="song-content">
-    <pre id="song-content">Loading...</pre>
-  </div>
+    <div class="song-content" id="song-content-wrapper">
+      <pre id="song-content">Loading...</pre>
+    </div>
 
-  <div class="song-actions">
-    <a href="./" class="back-link">← Back to Songbook</a>
+    <div class="song-actions">
+      <a href="./" class="back-link">← Back to Songbook</a>
+    </div>
+  </article>
+</div>
+
+<div class="scroll-controls" id="scroll-controls" style="display: none;">
+  <button class="scroll-btn" id="scroll-btn" title="Play/Pause">▶ Play</button>
+  <div class="speed-control">
+    <input type="range" class="speed-slider" id="speed-slider" min="0.1" max="2" step="0.1" value="1">
+    <span class="speed-label" id="speed-label">1.0x</span>
   </div>
-</article>
+</div>
 
 <script>
 (function() {
@@ -49,10 +59,83 @@ title: Song
       if (song.readiness) metaContainer.innerHTML += '<span class="meta-tag readiness">Readiness: ' + song.readiness + '</span>';
       
       document.title = (song.title || 'Song') + ' - Songbook';
+      
+      initScrollControls();
     })
     .catch(err => {
       document.getElementById('song-title').textContent = 'Error loading song';
       document.getElementById('song-content').textContent = err.message;
     });
 })();
+
+function initScrollControls() {
+  const controls = document.getElementById('scroll-controls');
+  const btn = document.getElementById('scroll-btn');
+  const slider = document.getElementById('speed-slider');
+  const label = document.getElementById('speed-label');
+  const wrapper = document.getElementById('song-content-wrapper');
+  
+  controls.style.display = 'flex';
+  
+  const savedSpeed = localStorage.getItem('songbook-scroll-speed');
+  if (savedSpeed) {
+    slider.value = savedSpeed;
+    label.textContent = parseFloat(savedSpeed).toFixed(1) + 'x';
+  }
+  
+  let isPlaying = false;
+  let scrollInterval = null;
+  
+  function updateSpeed() {
+    label.textContent = parseFloat(slider.value).toFixed(1) + 'x';
+    localStorage.setItem('songbook-scroll-speed', slider.value);
+  }
+  
+  function scrollDown() {
+    const content = document.getElementById('song-content-wrapper');
+    const contentBottom = content.getBoundingClientRect().bottom;
+    const windowHeight = window.innerHeight;
+    const controlsHeight = controls.offsetHeight;
+    
+    const remaining = contentBottom - windowHeight + controlsHeight;
+    
+    if (remaining <= 5) {
+      stopScroll();
+      return;
+    }
+    
+    const step = parseFloat(slider.value) * 2;
+    window.scrollBy(0, step);
+  }
+  
+  function startScroll() {
+    if (scrollInterval) return;
+    isPlaying = true;
+    btn.textContent = '⏸ Pause';
+    btn.classList.add('active');
+    scrollInterval = setInterval(scrollDown, 50);
+  }
+  
+  function stopScroll() {
+    if (scrollInterval) {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+    }
+    isPlaying = false;
+    btn.textContent = '▶ Play';
+    btn.classList.remove('active');
+  }
+  
+  function toggleScroll() {
+    if (isPlaying) {
+      stopScroll();
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(startScroll, 300);
+    }
+  }
+  
+  btn.addEventListener('click', toggleScroll);
+  slider.addEventListener('input', updateSpeed);
+}
 </script>
