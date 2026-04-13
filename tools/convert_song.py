@@ -41,7 +41,8 @@ def process_file(input_file, title, artist, piano=False, guitar=False, readiness
     
     with open(input_file, 'r', encoding='utf-8') as f:
         content = f.read()
-    
+        content = content.replace('\u2028', '\n').replace('\u2029', '\n')
+
     lines = content.split('\n')
     processed_lines = []
     for line in lines:
