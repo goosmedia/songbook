@@ -46,10 +46,7 @@ def process_file(input_file, title, artist, piano=False, guitar=False, readiness
     lines = content.split('\n')
     processed_lines = []
     for line in lines:
-        if line:
-            processed_lines.append('  ' + line)
-        else:
-            processed_lines.append('')
+        processed_lines.append('  ' + line)
     
     processed_content = '\n'.join(processed_lines)
     
