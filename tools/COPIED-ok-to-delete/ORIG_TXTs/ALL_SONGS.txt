@@ -1,0 +1,50 @@
+Ashes to Ashes.txt
+BEDS ARE BURNING.txt
+Bloodbuzz Ohio.txt
+Creep.txt
+eternal flame.txt
+EVERYBODY HURTs.txt
+Everybody wants to rule the world.txt
+Everything's Alright - JC Superstar.txt
+Fade Into You – Mazzy star.txt
+Fake Plastic trees.txt
+First Aid Kit - Emmylou.txt
+Frank Mills-The Lemonheads.txt
+Friday I'm in love.txt
+gen_commands.py
+gen_commands.sh
+ghosting.txt
+GIMMIE SYMPATHY - ACOUSTIC.txt
+GIMMIE SYMPATHY.txt
+Goin' Out West.txt
+Good Luck Babe by Chappell Roan.txt
+HALLELUJAH.txt
+Happy Together.txt
+Help I'm Alive.txt
+Heroes.txt
+Hurt.txt
+I SHOULD LIVE IN SALT.txt
+I Think We're Alone Now.txt
+In Bloom.txt
+In Heaven.txt
+It's  a  sin.txt
+KARMA POLICE.txt
+kill-v-maim.txt
+Laid Chords by James .txt
+Landslide – Fleetwood Mac.txt
+Let It Be.txt
+Linger Acoustic by The Cranberries .txt
+Linger by The Cranberries.txt
+Metric - Gimme Sympathy.txt
+Moana - How Far I’ll Go chords.txt
+Modern Love.txt
+Morrissey  Everyday is Like Sunday.txt
+ORIG_TXTs
+Perfect Day  Lou Reed.txt
+so long, Marianne.txt
+Space Oddity.txt
+STAND BY ME.txt
+Starman.txt
+Under Pressure.txt
+Wish You Were Here.txt
+Yoshimi.txt
