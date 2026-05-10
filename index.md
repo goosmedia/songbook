@@ -21,6 +21,10 @@ title: Songbook
     </label>
   </div>
 
+  <div class="search-wrapper">
+    <input type="text" id="search-input" class="search-input" placeholder="Search songs..." autocomplete="off">
+  </div>
+
   <div class="table-wrapper">
     <table id="song-table">
       <thead>
@@ -46,12 +50,22 @@ title: Songbook
   let songs = [];
   let sortKey = 'title';
   let sortDir = 'asc';
+  let searchQuery = '';
 
   function getSortValue(song, key) {
     const val = song[key];
     if (typeof val === 'boolean') return val ? 1 : 0;
     if (typeof val === 'number') return val;
     return (val || '').toString().toLowerCase();
+  }
+
+  function searchRelevance(song, q) {
+    let score = 0;
+    if ((song.filename || '').toLowerCase().includes(q)) score += 3;
+    if ((song.title || '').toLowerCase().includes(q)) score += 3;
+    if ((song.artist || '').toLowerCase().includes(q)) score += 2;
+    if ((song.content || '').toLowerCase().includes(q)) score += 1;
+    return score;
   }
 
   function renderHeader() {
@@ -89,7 +103,8 @@ title: Songbook
 
   function renderTable() {
     const tbody = document.getElementById('table-body');
-    const filtered = songs.filter(song => {
+
+    let filtered = songs.filter(song => {
       const pianoChecked = document.getElementById('filter-piano').checked;
       const guitarChecked = document.getElementById('filter-guitar').checked;
       const otherChecked = document.getElementById('filter-other').checked;
@@ -101,7 +116,20 @@ title: Songbook
       return false;
     });
 
+    const q = searchQuery.trim().toLowerCase();
+    if (q) {
+      filtered = filtered.filter(song => {
+        const fields = [song.filename, song.title, song.artist, song.content];
+        return fields.some(f => f && f.toLowerCase().includes(q));
+      });
+    }
+
     const sorted = [...filtered].sort((a, b) => {
+      if (q) {
+        const sa = searchRelevance(a, q);
+        const sb = searchRelevance(b, q);
+        if (sa !== sb) return sb - sa;
+      }
       const aVal = getSortValue(a, sortKey);
       const bVal = getSortValue(b, sortKey);
       if (aVal < bVal) return sortDir === 'asc' ? -1 : 1;
@@ -137,6 +165,11 @@ title: Songbook
   document.getElementById('filter-piano').addEventListener('change', renderTable);
   document.getElementById('filter-guitar').addEventListener('change', renderTable);
   document.getElementById('filter-other').addEventListener('change', renderTable);
+
+  document.getElementById('search-input').addEventListener('input', function() {
+    searchQuery = this.value;
+    renderTable();
+  });
 
   renderHeader();
   loadSongs();
