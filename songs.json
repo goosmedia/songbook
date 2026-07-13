@@ -9,7 +9,11 @@ layout: null
       "filename": {{ song_key | jsonify }},
       "title": {{ song.title | jsonify }},
       "artist": {{ song.artist | jsonify }},
-      "tags": {{ song.tags | default: '{}' | jsonify }},
+      {%- if song.tags -%}
+        "tags": {{ song.tags | jsonify }},
+      {%- else -%}
+        "tags": {},
+      {%- endif -%}
       "content": {{ song.content | jsonify }},
       "url": {{ song_key | prepend: "/songbook/song?f=" | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}
