@@ -1,8 +1,9 @@
 title: "BEDS ARE BURNING"
 artist: "Midnight Oil"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   
   BEDS ARE BURNING - Midnight Oil  Intro chords: E G A

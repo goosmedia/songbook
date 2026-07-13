@@ -1,8 +1,9 @@
 title: "In Heaven"
 artist: "Lynch"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   In Heaven (Lady in the Radiator Song)	-------------	The Pixies
   

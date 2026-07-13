@@ -1,8 +1,9 @@
 title: "Tomorrow"
 artist: "Beatles"
-piano: true
-guitar: false
-readiness: 6
+tags:
+  piano: true
+  guitar: false
+  readiness: 6
 content: |
   SONG: Tomorrow
       F             Fmaj7

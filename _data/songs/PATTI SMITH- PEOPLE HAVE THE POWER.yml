@@ -1,8 +1,9 @@
 title: "PATTI SMITH- PEOPLE HAVE THE POWER"
 artist: "Patti Smith"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   PATTI SMITH- PEOPLE HAVE THE POWER
           D              G

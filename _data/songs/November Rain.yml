@@ -1,8 +1,9 @@
 title: "November Rain"
 artist: "Guns and Roses"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   November Rain
   | F | Am | Dm | C 

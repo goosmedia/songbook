@@ -1,8 +1,9 @@
 title: "EVERYBODY HURTs"
 artist: "REM"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   EVERYBODY HURTS
   

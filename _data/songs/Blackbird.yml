@@ -1,8 +1,9 @@
 title: "Blackbird"
 artist: "Beatles"
-piano: false
-guitar: true
-readiness: 4
+tags:
+  piano: false
+  guitar: true
+  readiness: 4
 content: |
   Blackbird singing in the dead of night
   Take these broken wings and learn to fly

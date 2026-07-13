@@ -268,21 +268,18 @@ tbody tr:last-child td {
   border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 500;
+  background-color: rgba(0, 212, 255, 0.2);
+  color: var(--accent);
 }
 
-.meta-tag.piano {
+.meta-tag.tag-piano {
   background-color: rgba(255, 107, 157, 0.2);
   color: var(--piano-color);
 }
 
-.meta-tag.guitar {
+.meta-tag.tag-guitar {
   background-color: rgba(192, 132, 252, 0.2);
   color: var(--guitar-color);
-}
-
-.meta-tag.readiness {
-  background-color: rgba(0, 212, 255, 0.2);
-  color: var(--accent);
 }
 
 .song-content {
@@ -297,7 +294,9 @@ tbody tr:last-child td {
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
   line-height: 1.8;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word;
   margin: 0;
   color: var(--text-primary);
   background-color: transparent !important;

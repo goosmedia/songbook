@@ -1,8 +1,9 @@
 title: "american music-violent femmes"
 artist: "Violent Femmes"
-piano: false
-guitar: true
-readiness: 6
+tags:
+  piano: false
+  guitar: true
+  readiness: 6
 content: |
   [Verse 1]
   

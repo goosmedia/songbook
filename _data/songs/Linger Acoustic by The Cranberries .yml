@@ -1,8 +1,9 @@
 title: "Linger Acoustic by The Cranberries "
 artist: "The Cranberries"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Linger Acoustic by The Cranberries
   

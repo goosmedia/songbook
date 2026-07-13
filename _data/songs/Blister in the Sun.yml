@@ -1,8 +1,9 @@
 title: "Blister in the Sun"
 artist: "Violent Femmes"
-piano: false
-guitar: true
-readiness: 4
+tags:
+  piano: false
+  guitar: true
+  readiness: 4
 content: |
   Blister in the Sun           ARTIST: Violent Femmes
   When I'm out walking

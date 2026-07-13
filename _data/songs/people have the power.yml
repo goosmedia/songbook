@@ -1,8 +1,9 @@
 title: "people have the power"
 artist: "Patti Smith"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   [Verse]
           D              G

@@ -1,8 +1,9 @@
 title: "I SHOULD LIVE IN SALT"
 artist: "The National"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   I SHOULD LIVE IN SALT
   

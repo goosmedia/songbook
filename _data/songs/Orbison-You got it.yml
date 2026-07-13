@@ -1,8 +1,9 @@
 title: "Orbison-You got it"
 artist: "Roy Orbison"
-piano: true
-guitar: true
-readiness: 8
+tags:
+  piano: true
+  guitar: true
+  readiness: 8
 content: |
   YOU GOT IT - ROY ORBISON
   

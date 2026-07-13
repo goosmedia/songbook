@@ -1,8 +1,9 @@
 title: "Take On Me"
 artist: "A ha"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   Take On Me
 

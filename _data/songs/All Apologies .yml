@@ -1,8 +1,9 @@
 title: "All Apologies "
 artist: "Nirvana"
-piano: true
-guitar: true
-readiness: 3
+tags:
+  piano: true
+  guitar: true
+  readiness: 3
 content: |
   All Apologies
 

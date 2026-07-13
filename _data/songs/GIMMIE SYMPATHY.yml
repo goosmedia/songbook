@@ -1,8 +1,9 @@
 title: "GIMMIE SYMPATHY"
 artist: "Mother Mother"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   GIMMIE SYMPATHY
       A 

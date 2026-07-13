@@ -1,8 +1,9 @@
 title: "Morrissey  Everyday is Like Sunday"
 artist: "Morrisey"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   
   Morrissey  Everyday is Like Sunday

@@ -54,9 +54,9 @@ title: Song
       document.getElementById('song-content').textContent = song.content || '';
       
       const metaContainer = document.getElementById('song-meta');
-      if (song.piano) metaContainer.innerHTML += '<span class="meta-tag piano">Piano</span>';
-      if (song.guitar) metaContainer.innerHTML += '<span class="meta-tag guitar">Guitar</span>';
-      if (song.readiness) metaContainer.innerHTML += '<span class="meta-tag readiness">Readiness: ' + song.readiness + '</span>';
+      Object.entries(song.tags || {}).forEach(([key, value]) => {
+        metaContainer.innerHTML += `<span class="meta-tag tag-${key}">${key}: ${value}</span>`;
+      });
       
       document.title = (song.title || 'Song') + ' - Songbook';
       

@@ -1,8 +1,9 @@
 title: "Space Oddity"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   
   Guitar Chords by: Bowie David 

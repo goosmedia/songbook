@@ -1,8 +1,9 @@
 title: "Changes"
 artist: "David Bowie"
-piano: true
-guitar: false
-readiness: 3
+tags:
+  piano: true
+  guitar: false
+  readiness: 3
 content: |
   Changes (David Bowie)
    

@@ -1,8 +1,9 @@
 title: "Burning Pile Chords by Mother Mother"
 artist: "Mother Mother"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Burning Pile 
   Mother Mother

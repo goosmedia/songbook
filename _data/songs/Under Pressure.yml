@@ -1,8 +1,9 @@
 title: "Under Pressure"
 artist: "David Bowie"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   
   Under Pressure

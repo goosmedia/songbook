@@ -1,8 +1,9 @@
 title: "Common People by Pulp "
 artist: "Pulp"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Common People by Pulp
 

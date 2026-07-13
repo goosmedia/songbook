@@ -1,8 +1,9 @@
 title: "Come what may"
 artist: "Moulin Rouge"
-piano: true
-guitar: false
-readiness: 5
+tags:
+  piano: true
+  guitar: false
+  readiness: 5
 content: |
   Come what may 
     

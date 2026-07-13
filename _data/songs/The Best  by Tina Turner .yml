@@ -1,8 +1,9 @@
 title: "The Best  by Tina Turner "
 artist: "Tina Turner"
-piano: true
-guitar: false
-readiness: 5
+tags:
+  piano: true
+  guitar: false
+  readiness: 5
 content: |
   The Best
   Tina Turner  1989

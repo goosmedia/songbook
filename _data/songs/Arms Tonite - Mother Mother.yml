@@ -1,8 +1,9 @@
 title: "Arms Tonite - Mother Mother"
 artist: "Mother Mother"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Arms Tonite chords by Mother Mother
   Intro:  E

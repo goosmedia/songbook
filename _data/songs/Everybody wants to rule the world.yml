@@ -1,8 +1,9 @@
 title: "Everybody wants to rule the world"
 artist: "Tears for Fears"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   D w (A C#) to (G B)
   Welcome to your life - There's no turning back

@@ -1,8 +1,9 @@
 title: "ghosting"
 artist: "Mother Mother"
-piano: true
-guitar: false
-readiness: 5
+tags:
+  piano: true
+  guitar: false
+  readiness: 5
 content: |
   B
   I've been ghosting

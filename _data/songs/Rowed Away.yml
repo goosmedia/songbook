@@ -1,8 +1,9 @@
 title: "Rowed Away"
 artist: "Shred Kelly"
-piano: true
-guitar: true
-readiness: 6
+tags:
+  piano: true
+  guitar: true
+  readiness: 6
 content: |
   Rowed Away
   intro D - F#m

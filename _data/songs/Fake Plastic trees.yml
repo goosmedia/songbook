@@ -1,8 +1,9 @@
 title: "Fake Plastic trees"
 artist: "Radiohead"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Fake Plastic trees 
   A                            F#m 

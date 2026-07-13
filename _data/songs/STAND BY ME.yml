@@ -1,8 +1,9 @@
 title: "STAND BY ME"
 artist: "BB King"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   STAND BY ME arranged by John Lennon  Written By Ben E. King
   CHORDS: A, F#m, D, E, A

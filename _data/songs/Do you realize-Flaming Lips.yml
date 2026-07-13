@@ -1,8 +1,9 @@
 title: "Do you realize-Flaming Lips"
 artist: "Flaming Lips"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Do you realize-Flaming Lips
   [Verse]

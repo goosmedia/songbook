@@ -1,8 +1,9 @@
 title: "HALLELUJAH"
 artist: "Leonard Cohen"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   
   HALLELUJAH - Leonard Cohen

@@ -1,8 +1,9 @@
 title: "Creep"
 artist: "Radiohead"
-piano: false
-guitar: true
-readiness: 8
+tags:
+  piano: false
+  guitar: true
+  readiness: 8
 content: |
   
   Creep

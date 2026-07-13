@@ -1,8 +1,9 @@
 title: "The Commander Thinks Aloud by The Long Winters"
 artist: "The Long Winters"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   The Commander Thinks Aloud 
   by The Long Winters

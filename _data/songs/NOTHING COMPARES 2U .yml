@@ -1,8 +1,9 @@
 title: "NOTHING COMPARES 2U "
 artist: "Sinead Oconnor"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   NOTHING COMPARES 2U
                            

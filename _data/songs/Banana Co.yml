@@ -1,8 +1,9 @@
 title: "Banana Co"
 artist: "Radiohead"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   Banana Co
 

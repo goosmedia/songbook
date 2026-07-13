@@ -1,8 +1,9 @@
 title: "Song Title"
 artist: "Artist Name"
-piano: true
-guitar: false
-readiness: 5
+tags:
+  piano: true
+  guitar: false
+  readiness: 5
 content: |
   Chord    Chord
   Lyric line here

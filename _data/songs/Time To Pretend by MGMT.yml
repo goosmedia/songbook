@@ -1,8 +1,9 @@
 title: "Time To Pretend by MGMT"
 artist: "MGMT"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   Time To Pretend by MGMT
 

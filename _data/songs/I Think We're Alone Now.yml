@@ -1,8 +1,9 @@
 title: "I Think We're Alone Now"
 artist: "Tiffany"
-piano: false
-guitar: true
-readiness: 8
+tags:
+  piano: false
+  guitar: true
+  readiness: 8
 content: |
   "I Think We're Alone Now"
   

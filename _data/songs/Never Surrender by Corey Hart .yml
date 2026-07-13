@@ -1,8 +1,9 @@
 title: "Never Surrender by Corey Hart "
 artist: "Corey Hart"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Never Surrender by Corey Hart
 

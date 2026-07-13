@@ -1,8 +1,9 @@
 title: "Your Song by Elton John "
 artist: "Elton John"
-piano: true
-guitar: false
-readiness: 6
+tags:
+  piano: true
+  guitar: false
+  readiness: 6
 content: |
   Your Song Chords by Elton John
 

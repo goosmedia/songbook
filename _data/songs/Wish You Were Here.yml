@@ -1,8 +1,9 @@
 title: "Wish You Were Here"
 artist: "Pink Floyd"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   
   Wish You Were Here  (Waters, Gilmour)

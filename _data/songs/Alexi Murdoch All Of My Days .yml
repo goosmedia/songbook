@@ -1,8 +1,9 @@
 title: "Alexi Murdoch All Of My Days "
 artist: "Alexi Murdoch"
-piano: false
-guitar: true
-readiness: 6
+tags:
+  piano: false
+  guitar: true
+  readiness: 6
 content: |
   Alexi Murdoch All Of My Days 
 

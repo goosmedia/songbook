@@ -1,8 +1,9 @@
 title: "David Bowie - Five Years"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   David Bowie - Five Years
 

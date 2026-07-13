@@ -1,8 +1,9 @@
 title: "Where is my mind"
 artist: "The Pixies"
-piano: true
-guitar: false
-readiness: 8
+tags:
+  piano: true
+  guitar: false
+  readiness: 8
 content: |
   Where is my mind?
    E                        C#m               G#  A

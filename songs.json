@@ -9,9 +9,7 @@ layout: null
       "filename": {{ song_key | jsonify }},
       "title": {{ song.title | jsonify }},
       "artist": {{ song.artist | jsonify }},
-      "piano": {{ song.piano | default: false }},
-      "guitar": {{ song.guitar | default: false }},
-      "readiness": {{ song.readiness | default: 5 }},
+      "tags": {{ song.tags | default: '{}' | jsonify }},
       "content": {{ song.content | jsonify }},
       "url": {{ song_key | prepend: "/songbook/song?f=" | jsonify }}
     }{%- unless forloop.last -%},{%- endunless -%}

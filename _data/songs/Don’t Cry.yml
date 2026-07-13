@@ -1,8 +1,9 @@
 title: "Don’t Cry"
 artist: "Guns and Roses"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   Don’t Cry
   Am         Dm

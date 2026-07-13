@@ -1,8 +1,9 @@
 title: "Frank Mills-The Lemonheads"
 artist: "Lemonheads"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   "Frank Mills" The Lemonheads
   C                    G                   

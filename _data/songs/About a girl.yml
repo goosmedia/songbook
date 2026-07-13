@@ -1,8 +1,9 @@
 title: "About a girl"
 artist: "Nirvana"
-piano: false
-guitar: true
-readiness: 4
+tags:
+  piano: false
+  guitar: true
+  readiness: 4
 content: |
   Nirvana – About a Girl
   Em G            Em    G

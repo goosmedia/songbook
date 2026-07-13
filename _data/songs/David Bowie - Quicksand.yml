@@ -1,8 +1,9 @@
 title: "David Bowie - Quicksand"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   David Bowie - Quicksand
   Intro: G Am7 x4

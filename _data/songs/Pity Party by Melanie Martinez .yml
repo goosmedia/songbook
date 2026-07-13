@@ -1,8 +1,9 @@
 title: "Pity Party by Melanie Martinez "
 artist: "Melanie Martinez"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Pity Party by Melanie Martinez
 

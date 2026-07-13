@@ -1,8 +1,9 @@
 title: "Spiderwebs by No Doubt "
 artist: "No Doubt"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Spiderwebs by No Doubt
 

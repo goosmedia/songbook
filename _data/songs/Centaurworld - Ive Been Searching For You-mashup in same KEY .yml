@@ -1,8 +1,9 @@
 title: "Centaurworld - Ive Been Searching For You-mashup in same KEY "
 artist: "Centaurworld"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   [Verse 1]
            E             B

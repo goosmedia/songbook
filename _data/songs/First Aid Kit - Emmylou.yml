@@ -1,8 +1,9 @@
 title: "First Aid Kit - Emmylou"
 artist: "First Air Kit"
-piano: true
-guitar: true
-readiness: 6
+tags:
+  piano: true
+  guitar: true
+  readiness: 6
 content: |
   First Aid Kit - Emmylou (2012)
   F      Am        Dm     Bbmaj7

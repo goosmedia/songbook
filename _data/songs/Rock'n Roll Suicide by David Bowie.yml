@@ -1,8 +1,9 @@
 title: "Rock'n Roll Suicide by David Bowie"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   Rock'n Roll Suicide by David Bowie
                 C                          E7

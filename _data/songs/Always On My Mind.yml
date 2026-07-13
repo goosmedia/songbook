@@ -1,8 +1,9 @@
 title: "Always On My Mind"
 artist: "Willie Nelson"
-piano: true
-guitar: true
-readiness: 6
+tags:
+  piano: true
+  guitar: true
+  readiness: 6
 content: |
   Always On My Mind
 

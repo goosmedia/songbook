@@ -1,8 +1,9 @@
 title: "Laid Chords by James "
 artist: "James"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   Laid Chords by James
   

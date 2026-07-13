@@ -1,8 +1,9 @@
 title: "Life on Mars"
 artist: "David Bowie"
-piano: true
-guitar: false
-readiness: 4
+tags:
+  piano: true
+  guitar: false
+  readiness: 4
 content: |
   F       Am                          Cm/Eb
   It's a god-awful small affair

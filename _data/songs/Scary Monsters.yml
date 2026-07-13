@@ -1,8 +1,9 @@
 title: "Scary Monsters"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Scary Monsters
   Intro E D

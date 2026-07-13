@@ -1,8 +1,9 @@
 title: "wave of mutilation"
 artist: "The Pixies"
-piano: false
-guitar: true
-readiness: 5
+tags:
+  piano: false
+  guitar: true
+  readiness: 5
 content: |
   wave of mutilation
 

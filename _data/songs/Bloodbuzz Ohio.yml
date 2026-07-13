@@ -1,8 +1,9 @@
 title: "Bloodbuzz Ohio"
 artist: "The National"
-piano: true
-guitar: true
-readiness: 4
+tags:
+  piano: true
+  guitar: true
+  readiness: 4
 content: |
   
   Bloodbuzz Ohio

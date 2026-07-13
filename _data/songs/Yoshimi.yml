@@ -1,8 +1,9 @@
 title: "Yoshimi"
 artist: "Flaming Lips"
-piano: true
-guitar: true
-readiness: 7
+tags:
+  piano: true
+  guitar: true
+  readiness: 7
 content: |
   
   "Yoshimi Battles The Pink Robots P. I"

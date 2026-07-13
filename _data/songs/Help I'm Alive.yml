@@ -1,8 +1,9 @@
 title: "Help I'm Alive"
 artist: "Mother Mother"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Help I'm Alive
   Verse 1:

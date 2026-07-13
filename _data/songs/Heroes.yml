@@ -1,8 +1,9 @@
 title: "Heroes"
 artist: "David Bowie"
-piano: false
-guitar: true
-readiness: 5
+tags:
+  piano: false
+  guitar: true
+  readiness: 5
 content: |
   Heroes 
   David Bowie

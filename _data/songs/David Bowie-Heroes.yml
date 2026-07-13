@@ -1,8 +1,9 @@
 title: "David Bowie-Heroes"
 artist: "David Bowie"
-piano: false
-guitar: true
-readiness: 6
+tags:
+  piano: false
+  guitar: true
+  readiness: 6
 content: |
   David Bowie  1977 (Heroes)
   D  G  D  G 

@@ -1,8 +1,9 @@
 title: "Starman"
 artist: "David Bowie"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   
   Titre: Starman

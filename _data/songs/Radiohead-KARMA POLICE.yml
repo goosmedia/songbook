@@ -1,8 +1,9 @@
 title: "Radiohead-KARMA POLICE"
 artist: "Radiohead"
-piano: true
-guitar: true
-readiness: 6
+tags:
+  piano: true
+  guitar: true
+  readiness: 6
 content: |
   KARMA POLICE - by Radiohead
   Am Am/F# Em Em/F# G

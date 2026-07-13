@@ -5,20 +5,8 @@ title: Songbook
 <div class="container">
   <h1 class="page-title">My Songbook</h1>
 
-  <div class="filters">
+  <div class="filters" id="filters">
     <span class="filter-label">Filter:</span>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-piano" checked>
-      <span>Piano</span>
-    </label>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-guitar" checked>
-      <span>Guitar</span>
-    </label>
-    <label class="filter-checkbox">
-      <input type="checkbox" id="filter-other">
-      <span>Other</span>
-    </label>
   </div>
 
   <div class="search-wrapper">
@@ -39,21 +27,23 @@ title: Songbook
 
 <script>
 (function() {
-  const COLUMNS = [
+  const STATIC_COLUMNS = [
     { key: 'title', label: 'Title', type: 'link' },
-    { key: 'artist', label: 'Artist', type: 'text' },
-    { key: 'piano', label: 'Piano', type: 'icon' },
-    { key: 'guitar', label: 'Guitar', type: 'icon' },
-    { key: 'readiness', label: 'Readiness', type: 'number' }
+    { key: 'artist', label: 'Artist', type: 'text' }
   ];
 
   let songs = [];
+  let tagColumns = [];
   let sortKey = 'title';
   let sortDir = 'asc';
   let searchQuery = '';
 
+  function getTagValue(song, key) {
+    return (song.tags && song.tags[key] !== undefined) ? song.tags[key] : null;
+  }
+
   function getSortValue(song, key) {
-    const val = song[key];
+    const val = getTagValue(song, key) || song[key];
     if (typeof val === 'boolean') return val ? 1 : 0;
     if (typeof val === 'number') return val;
     return (val || '').toString().toLowerCase();
@@ -65,12 +55,19 @@ title: Songbook
     if ((song.title || '').toLowerCase().includes(q)) score += 3;
     if ((song.artist || '').toLowerCase().includes(q)) score += 2;
     if ((song.content || '').toLowerCase().includes(q)) score += 1;
+    const tagValues = Object.values(song.tags || {});
+    if (tagValues.some(v => String(v).toLowerCase().includes(q))) score += 1;
     return score;
   }
 
+  function buildColumns() {
+    return [...STATIC_COLUMNS, ...tagColumns];
+  }
+
   function renderHeader() {
+    const columns = buildColumns();
     const headerRow = document.getElementById('table-header');
-    headerRow.innerHTML = COLUMNS.map(col => `
+    headerRow.innerHTML = columns.map(col => `
       <th class="sortable" data-key="${col.key}">
         ${col.label}
         <span class="sort-icon">${sortKey === col.key ? (sortDir === 'asc' ? '↑' : '↓') : ''}</span>
@@ -92,26 +89,33 @@ title: Songbook
   }
 
   function renderCell(song, col) {
+    const val = getTagValue(song, col.key);
     if (col.type === 'icon') {
-      return `<td class="icon-cell"><span class="icon ${song[col.key] ? 'active' : 'inactive'}">${song[col.key] ? '●' : '○'}</span></td>`;
+      return `<td class="icon-cell"><span class="icon ${val ? 'active' : 'inactive'}">${val ? '●' : '○'}</span></td>`;
     }
     if (col.type === 'link') {
       return `<td class="title-cell"><a href="${song.url}">${song.title}</a></td>`;
     }
-    return `<td>${song[col.key] || '—'}</td>`;
+    return `<td>${val !== null && val !== undefined ? val : '—'}</td>`;
   }
 
   function renderTable() {
     const tbody = document.getElementById('table-body');
+    const columns = buildColumns();
 
     let filtered = songs.filter(song => {
-      const pianoChecked = document.getElementById('filter-piano').checked;
-      const guitarChecked = document.getElementById('filter-guitar').checked;
-      const otherChecked = document.getElementById('filter-other').checked;
+      const checkboxes = document.querySelectorAll('.filter-tag');
+      const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
 
-      if (song.piano && pianoChecked) return true;
-      if (song.guitar && guitarChecked) return true;
-      if (!song.piano && !song.guitar && otherChecked) return true;
+      if (!anyChecked) return true;
+
+      for (const cb of checkboxes) {
+        if (cb.checked) {
+          const tagKey = cb.dataset.tag;
+          const val = getTagValue(song, tagKey);
+          if (val === true || (val !== null && val !== undefined && val !== false)) return true;
+        }
+      }
 
       return false;
     });
@@ -120,7 +124,8 @@ title: Songbook
     if (q) {
       filtered = filtered.filter(song => {
         const fields = [song.filename, song.title, song.artist, song.content];
-        return fields.some(f => f && f.toLowerCase().includes(q));
+        const tagVals = Object.values(song.tags || {}).map(v => String(v));
+        return [...fields, ...tagVals].some(f => f && f.toLowerCase().includes(q));
       });
     }
 
@@ -138,15 +143,49 @@ title: Songbook
     });
 
     if (sorted.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5" class="empty">No songs match your filters</td></tr>';
+      tbody.innerHTML = `<tr><td colspan="${columns.length}" class="empty">No songs match your filters</td></tr>`;
       return;
     }
 
     tbody.innerHTML = sorted.map(song => `
-      <tr>${COLUMNS.map(col => renderCell(song, col)).join('')}</tr>
+      <tr>${columns.map(col => renderCell(song, col)).join('')}</tr>
     `).join('');
 
     renderHeader();
+  }
+
+  function buildFilters() {
+    const allTagKeys = new Set();
+    songs.forEach(song => {
+      Object.keys(song.tags || {}).forEach(key => allTagKeys.add(key));
+    });
+
+    const filtersContainer = document.getElementById('filters');
+    const label = filtersContainer.querySelector('.filter-label');
+
+    allTagKeys.forEach(key => {
+      const hasTrueValue = songs.some(song => getTagValue(song, key) === true);
+      if (!hasTrueValue) return;
+
+      const wrapper = document.createElement('label');
+      wrapper.className = 'filter-checkbox';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'filter-tag';
+      checkbox.dataset.tag = key;
+      checkbox.checked = true;
+      checkbox.addEventListener('change', renderTable);
+
+      const span = document.createElement('span');
+      span.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+
+      wrapper.appendChild(checkbox);
+      wrapper.appendChild(span);
+      filtersContainer.appendChild(wrapper);
+
+      tagColumns.push({ key, label: key.charAt(0).toUpperCase() + key.slice(1), type: hasTrueValue ? 'icon' : 'text' });
+    });
   }
 
   function loadSongs() {
@@ -154,17 +193,14 @@ title: Songbook
       .then(r => r.json())
       .then(data => {
         songs = data;
+        buildFilters();
         renderTable();
       })
       .catch(() => {
-        document.getElementById('table-body').innerHTML = 
+        document.getElementById('table-body').innerHTML =
           '<tr><td colspan="5" class="error">Failed to load songs. Make sure Jekyll is running.</td></tr>';
       });
   }
-
-  document.getElementById('filter-piano').addEventListener('change', renderTable);
-  document.getElementById('filter-guitar').addEventListener('change', renderTable);
-  document.getElementById('filter-other').addEventListener('change', renderTable);
 
   document.getElementById('search-input').addEventListener('input', function() {
     searchQuery = this.value;

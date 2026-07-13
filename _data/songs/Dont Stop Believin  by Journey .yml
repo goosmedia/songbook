@@ -1,8 +1,9 @@
 title: "Dont Stop Believin  by Journey "
 artist: "Journey"
-piano: true
-guitar: true
-readiness: 5
+tags:
+  piano: true
+  guitar: true
+  readiness: 5
 content: |
   Dont Stop Believin  by Journey
   [Verse 1]

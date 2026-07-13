@@ -1,8 +1,9 @@
 title: "Happy Together"
 artist: "The Turtles"
-piano: false
-guitar: true
-readiness: 5
+tags:
+  piano: false
+  guitar: true
+  readiness: 5
 content: |
   Em      D       C      B       
   Imagine me and you, I do.

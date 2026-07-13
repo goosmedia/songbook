@@ -1,8 +1,9 @@
 title: "ACDC SHOOK ME"
 artist: "ACDC"
-piano: false
-guitar: true
-readiness: 7
+tags:
+  piano: false
+  guitar: true
+  readiness: 7
 content: |
   ACDC SHOOK ME
   She was a fast machine
